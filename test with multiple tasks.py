@@ -61,18 +61,21 @@ def get_album_photos_url(page):
 	return (re.compile(r'(\w+.png|\w+.jpg)').findall(album_request_result))
 
 if __name__ == '__main__':
+	download_image=[]
+
 	for i in range(1, int(math.ceil(CRAWL_PHOTOS_NUMBER / 20.0))):
-		threads = []
+
 
 		for image_name in get_album_photos_url(i):
-			#save_image(image_name);
-			#threads.append(threading.Thread(target=save_image, args=(image_name,)))
-			download_image=translation(image_name)
-			#os.system('wget  %s -P %s' %(download_image,SAVE_PATH))
-			wget.download(download_image, SAVE_PATH)
-			#print translation(image_name)
-		'''
-		for t in threads:
-			#t.setDaemon(True)
-			t.start()
-'''
+
+			download_image.append(translation(image_name))
+
+	#save as a txt file for wget program
+	fl = open('list.txt', 'w')
+	for i in download_image:
+		fl.write(i)
+		fl.write("\n")
+	fl.close()
+	#run with wget program
+	os.system('wget -P %s -i list.txt' % (SAVE_PATH))
+

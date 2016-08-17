@@ -1,5 +1,5 @@
 from PIL import Image
-currDir = 'C:\Users\liker\PycharmProjects\untitled'
+#currDir = 'C:\Users\liker\PycharmProjects\untitled'
 
 import os
 def removeFile(dir,postfix):
@@ -15,4 +15,5 @@ def removeFile(dir,postfix):
 
 
 
-removeFile(currDir,'.jpg')
+removeFile('./','.tmp')
+removeFile('./','.jpg')
