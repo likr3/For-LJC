@@ -1,6 +1,6 @@
 #! usr/bin/python
 #coding=utf-8
-import os, threading, requests, math, re, random
+import os, threading, requests, math, re, random, wget
 
 
 # Configuration Start
@@ -68,7 +68,8 @@ if __name__ == '__main__':
 			#save_image(image_name);
 			#threads.append(threading.Thread(target=save_image, args=(image_name,)))
 			download_image=translation(image_name)
-			os.system('wget  %s -P %s' %(download_image,SAVE_PATH))
+			#os.system('wget  %s -P %s' %(download_image,SAVE_PATH))
+			wget.download(download_image, SAVE_PATH)
 			#print translation(image_name)
 		'''
 		for t in threads:
