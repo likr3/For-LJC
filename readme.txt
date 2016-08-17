@@ -1,1 +1,1 @@
-wget is used to downlaod.
+LJC is really rubbish!
